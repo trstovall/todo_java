@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": [
+        "src\\main\\java",
+    ],
+    "java.project.referencedLibraries": [],
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "maven.terminal.useJavaHome": true,
+    "maven.view": "flat"
+}
