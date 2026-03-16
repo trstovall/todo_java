@@ -1,10 +1,11 @@
 package com.example.todo.service;
 
-import com.example.todo.model.Task;
-import com.example.todo.repository.TaskRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.example.todo.model.Task;
+import com.example.todo.repository.TaskRepository;
 
 @Service
 public class TaskService {
@@ -23,7 +24,7 @@ public class TaskService {
         if (id == null) {
             throw new IllegalArgumentException("Task id must not be null");
         }
-        return repo.findById(id).orElseThrow();
+        return repo.findById(id).orElseThrow(() -> new IllegalArgumentException("Task with id " + id + " not found"));
     }
 
     public Task create(Task task) {
@@ -38,7 +39,7 @@ public class TaskService {
             throw new IllegalArgumentException("Task id must not be null");
         }
 
-        Task existing = repo.findById(id).orElseThrow();
+        Task existing = repo.findById(id).orElseThrow(() -> new IllegalArgumentException("Task with id " + id + " not found"));
 
         existing.setTitle(updated.getTitle());
         existing.setCompleted(updated.isCompleted());
